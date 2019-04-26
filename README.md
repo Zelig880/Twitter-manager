@@ -1,3 +1,10 @@
-# angular-aopcuf
+# Twitter-manager
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/angular-aopcuf)
+Manage your twitter account at ease.
+
+The project stack is:
+
+Server - NodeJs
+FrontEnd - Angular
+
+The project is still work in progress and I am open to suggestion
