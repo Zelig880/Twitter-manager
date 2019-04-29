@@ -10,6 +10,8 @@ class TwitterApi {
             access_token_secret: Config.twitterApi.ACCESS_TOKEN_SECRET
         });
 
+        this.screen_name = Config.twitterApi.SCREEN_NAME
+
         this.getStatuses = this.getStatuses.bind(this);
         this.getFriends = this.getFriends.bind(this);
         this.getUserInfo = this.getUserInfo.bind(this);
@@ -17,7 +19,7 @@ class TwitterApi {
 
     getFriends(req, res, arg) {
 
-        var params = {screen_name: "Zelig880"};
+        var params = {screen_name: this.screen_name};
         
         this.client
             .get('followers/ids', params)
@@ -31,7 +33,7 @@ class TwitterApi {
     
     getUserInfo(req, res, arg) {
 
-        var params = {screen_name: "Zelig880"};
+        var params = {screen_name: this.screen_name};
         
         this.client
             .get('users/show', params)
@@ -44,7 +46,7 @@ class TwitterApi {
     }
 
     getStatuses(req, res, arg) {
-        var params = {screen_name: "Zelig880"};
+        var params = {screen_name: this.screen_name};
         this.client
             .get('statuses/user_timeline', params)
             .then( (tweets) => {
