@@ -1,17 +1,37 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var functions = require('./functions');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const functions = require('./functions');
+const TwitterApi = require('./twitterApi');
 
-var app = express();
+class Server {
+    constructor() {
+        this.twitterClient = new TwitterApi();
+        this.app = express();
+        
+        this.start(); 
+        this.router();
+    }
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
-app.get('/', function(req, res) {
-    res.json({success: true, data:"server Up!"});
-});
-app.post('/authorize', functions.authorize);
-app.post('/search', functions.search);
-app.post('/user', functions.user);
-console.log("app running and listening")
-app.listen(3000);
+    initExpressMiddleware(){
+        this.app.use(bodyParser.urlencoded({extended: true}));
+        this.app.use(cors());
+    }
+    
+    router(){
+
+        this.app.get('/', function(req, res) {
+            res.json({success: true, data:"server Up!"});
+        });
+        this.app.post('/search', functions.search);
+        this.app.get('/user', this.twitterClient.getStatuses);
+        this.app.get('/user2', this.twitterClient.getStatuses);
+    }
+
+    start (){
+        console.log("App listening on port 3000");
+        this.app.listen(3000);
+    }
+}
+
+new Server();
