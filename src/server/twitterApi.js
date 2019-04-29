@@ -11,20 +11,46 @@ class TwitterApi {
         });
 
         this.getStatuses = this.getStatuses.bind(this);
+        this.getFriends = this.getFriends.bind(this);
+        this.getUserInfo = this.getUserInfo.bind(this);
+    }
+
+    getFriends(req, res, arg) {
+
+        var params = {screen_name: "Zelig880"};
+        
+        this.client
+            .get('followers/ids', params)
+            .then( (tweets) => {
+                res.json({success: true, data:tweets});
+            })
+            .catch((error) => {
+                res.json({success: false, data:error});
+            })
+    }
+    
+    getUserInfo(req, res, arg) {
+
+        var params = {screen_name: "Zelig880"};
+        
+        this.client
+            .get('users/show', params)
+            .then( (tweets) => {
+                res.json({success: true, data:tweets});
+            })
+            .catch((error) => {
+                res.json({success: false, data:error});
+            })
     }
 
     getStatuses(req, res, arg) {
         var params = {screen_name: "Zelig880"};
         this.client
             .get('statuses/user_timeline', params)
-            .then(function(error, tweets, response) {
-                if (!error) {
-                    res.json({success: true, data:tweet});
-                }
-
-                res.json({success: false, data:error});
+            .then( (tweets) => {
+                res.json({success: true, data:tweets});
             })
-            .catch(function (error) {
+            .catch((error) => {
                 res.json({success: false, data:error});
             })
 

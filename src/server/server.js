@@ -25,7 +25,8 @@ class Server {
         });
         this.app.post('/search', functions.search);
         this.app.get('/user', this.twitterClient.getStatuses);
-        this.app.get('/user2', this.twitterClient.getStatuses);
+        this.app.get('/getFriends', this.twitterClient.getFriends);
+        this.app.get('/getUserInfo', this.twitterClient.getUserInfo);
     }
 
     start (){
