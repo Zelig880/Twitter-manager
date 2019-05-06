@@ -1,3 +1,9 @@
+#appContainer{
+    width: 960px;
+    margin: 0 auto;
+    border: 1px solid #cccccc;
+}
+
 p {
   font-family: Lato;
 }

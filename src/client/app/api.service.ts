@@ -20,8 +20,18 @@ export class ApiService {
     );
   }
   
-  getJson() {
-    return this.http.get('/assets/shipping.json');
+  getDummyFollowers() {
+    return this.http.get<any>(`${this.apiUrl}/getDummyFollowers`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  getFollowing() {
+    return this.http.get<any>(`${this.apiUrl}/getFollowing`).pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
 
   private handleError(error) {

@@ -1,5 +1,6 @@
 var Twitter = require('twitter');
 var Config = require('./config');
+var dummyData = require('./assets/dummy.followers.json');
 
 class TwitterApi {
     constructor() {
@@ -13,16 +14,36 @@ class TwitterApi {
         this.screen_name = Config.twitterApi.SCREEN_NAME
 
         this.getStatuses = this.getStatuses.bind(this);
-        this.getFriends = this.getFriends.bind(this);
+        this.getFollowers = this.getFollowers.bind(this);
+        this.getFollowing = this.getFollowing.bind(this);
         this.getUserInfo = this.getUserInfo.bind(this);
     }
+    
+    getDummyFollowers(req, res, arg) {
+        
+        res.json({success: true, data:dummyData});
+    }
 
-    getFriends(req, res, arg) {
+    getFollowers(req, res, arg) {
 
         var params = {screen_name: this.screen_name};
         
         this.client
-            .get('followers/ids', params)
+            .get('followers/list', params)
+            .then( (tweets) => {
+                res.json({success: true, data:tweets});
+            })
+            .catch((error) => {
+                res.json({success: false, data:error});
+            })
+    }
+
+    getFollowing(req, res, arg) {
+
+        var params = {screen_name: this.screen_name};
+        
+        this.client
+            .get('friends/list', params)
             .then( (tweets) => {
                 res.json({success: true, data:tweets});
             })

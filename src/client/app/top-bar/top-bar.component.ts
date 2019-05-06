@@ -15,7 +15,7 @@ export class TopBarComponent implements OnInit {
     
     this.apiService.getUserInfo()
       .subscribe(
-        (data) => this.userInfo = { ...data }, // success path
+        (data) => this.userInfo = { ...data.data }, // success path
         error => this.error = error // error path
       );
   }

@@ -1,0 +1,15 @@
+div{
+    width: 200px;
+    height: 80px;
+    padding: 5px 10px;
+}
+
+img{
+    width:80px;
+    height:80px;
+    float: left;
+}
+
+p{
+    padding-left:45px;
+}

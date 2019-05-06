@@ -1,0 +1,8 @@
+#top-bar{
+    height:80px;
+    display: flex;
+    padding: 20px;
+}
+span{
+    flex-grow: 1;
+}

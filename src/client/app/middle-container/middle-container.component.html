@@ -1,0 +1,7 @@
+
+  middle-container works!
+  
+  <div *ngFor="let item of followers | keyvalue ">
+    <app-user-container [name]="item.value.name" [avatar]="item.value.profile_image_url_https" ></app-user-container>
+  </div>
+  

@@ -1,4 +1,8 @@
-<p>
-  top-bar works!
-  {{ userInfo.data | json }}
-</p>
+<div id="top-bar">
+  <span>
+    Followers: {{ userInfo.followers_count | json }}
+  </span>
+  <span>
+    Followings: {{ userInfo.friends_count | json }}
+  </span>
+</div>
