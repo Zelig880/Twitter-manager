@@ -9,6 +9,7 @@ class Server {
         this.twitterClient = new TwitterApi();
         this.app = express();
         
+        this.initExpressMiddleware();
         this.start(); 
         this.router();
     }
