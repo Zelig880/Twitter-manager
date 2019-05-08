@@ -13,6 +13,7 @@
     "@angular/platform-browser-dynamic": "^7.2.5",
     "@angular/router": "^7.2.5",
     "core-js": "^2.6.5",
+    "memory-cache": "^0.2.0",
     "rxjs": "^6.4.0",
     "twitter": "^1.7.1",
     "zone.js": "^0.8.29"

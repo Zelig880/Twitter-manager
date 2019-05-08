@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const functions = require('./functions');
 const TwitterApi = require('./twitterApi');
+const Cache = require('./cache');
 
 class Server {
     constructor() {
         this.twitterClient = new TwitterApi();
         this.app = express();
+        this.cache = new Cache();
         
         this.initExpressMiddleware();
         this.start(); 
@@ -17,6 +19,7 @@ class Server {
     initExpressMiddleware(){
         this.app.use(bodyParser.urlencoded({extended: true}));
         this.app.use(cors());
+        this.app.use(this.cache.middleware);
     }
     
     router(){
