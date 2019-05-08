@@ -20,8 +20,8 @@ export class ApiService {
     );
   }
   
-  getDummyFollowers() {
-    return this.http.get<any>(`${this.apiUrl}/getDummyFollowers`).pipe(
+  getFollowers() {
+    return this.http.get<any>(`${this.apiUrl}/getFollowers`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );

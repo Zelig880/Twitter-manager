@@ -1,6 +1,5 @@
 var Twitter = require('twitter');
 var Config = require('./config');
-var dummyData = require('./assets/dummy.followers.json');
 
 class TwitterApi {
     constructor() {
@@ -17,11 +16,6 @@ class TwitterApi {
         this.getFollowers = this.getFollowers.bind(this);
         this.getFollowing = this.getFollowing.bind(this);
         this.getUserInfo = this.getUserInfo.bind(this);
-    }
-    
-    getDummyFollowers(req, res, arg) {
-        
-        res.json({success: true, data:dummyData});
     }
 
     getFollowers(req, res, arg) {

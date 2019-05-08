@@ -32,7 +32,6 @@ class Server {
         this.app.get('/getFollowers', this.twitterClient.getFollowers);
         this.app.get('/getFollowing', this.twitterClient.getFollowing);
         this.app.get('/getUserInfo', this.twitterClient.getUserInfo);
-        this.app.get('/getDummyFollowers', this.twitterClient.getDummyFollowers);
     }
 
     start (){
